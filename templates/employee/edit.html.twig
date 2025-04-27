@@ -28,7 +28,9 @@
 							{{ include('employee/_form.html.twig', {'button_label': 'Update'}) }}
 
 							<div class="flex items-center space-x-4 mt-8">
-								<a href="{{ path('app_employee_index') }}" class="px-6 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg text-sm font-medium text-gray-700 transition duration-150 ease-in-out">Back to list</a>
+								<a href="{{ path('app_employee_index') }}" class="text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">← Back to list</a>
+
+
 								{{ include('employee/_delete_form.html.twig') }}
 							</div>
 						</div>

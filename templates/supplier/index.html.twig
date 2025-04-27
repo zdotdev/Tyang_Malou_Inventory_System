@@ -1,39 +1,75 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Supplier index{% endblock %}
+{% block title %}Supplier index
+{% endblock %}
 
 {% block body %}
-    <h1>Supplier index</h1>
+<nav class="bg-green-800 p-4">
+	<div class="container mx-auto flex items-center justify-between">
+		<div class="flex space-x-4">
+			<a href={{ path('app_home') }} class="text-white hover:bg-green-700 px-3 py-2 rounded">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"/>
+				</svg>
+			</a>
+		</div>
+		<div class="flex space-x-4">
+			<a href="#" class="text-white hover:bg-green-700 px-3 py-2 rounded">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"/>
+				</svg>
+			</a>
+		</div>
+	</div>
+</nav>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Supplier_name</th>
-                <th>Contact_person</th>
-                <th>Contact_number</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for supplier in suppliers %}
-            <tr>
-                <td>{{ supplier.id }}</td>
-                <td>{{ supplier.supplierName }}</td>
-                <td>{{ supplier.contactPerson }}</td>
-                <td>{{ supplier.contactNumber }}</td>
-                <td>
-                    <a href="{{ path('app_supplier_show', {'id': supplier.id}) }}">show</a>
-                    <a href="{{ path('app_supplier_edit', {'id': supplier.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="min-h-screen bg-gray-100 py-6 flex flex-col items-center sm:py-12">
+        <div class="relative py-3 w-full max-w-4xl mx-auto px-4">
+            <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+                <div class="mx-auto">
+                    <div class="divide-y divide-gray-200">
+                        <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                            <h1 class="text-3xl font-bold text-gray-900 mb-8">List of Suppliers</h1>
 
-    <a href="{{ path('app_supplier_new') }}">Create new</a>
+                            <div class="overflow-x-auto">
+                                <table class="w-full table-auto">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Supplier Name</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact Person</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact Number</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        {% for supplier in suppliers %}
+                                            <tr class="hover:bg-gray-50">
+                                                <td class="px-6 py-4 whitespace-nowrap">{{ supplier.supplierName }}</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">{{ supplier.contactPerson }}</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">{{ supplier.contactNumber }}</td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                                    <a href="{{ path('app_supplier_show', {'id': supplier.id}) }}" class="text-indigo-600 hover:text-indigo-900 mr-4">Show</a>
+                                                    <a href="{{ path('app_supplier_edit', {'id': supplier.id}) }}" class="text-green-600 hover:text-green-900">Edit</a>
+                                                </td>
+                                            </tr>
+                                        {% else %}
+                                            <tr>
+                                                <td colspan="4" class="px-6 py-4 text-center text-sm text-gray-500">No records found</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="mt-8">
+                                <a href="{{ path('app_supplier_new') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    Create New Supplier
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
