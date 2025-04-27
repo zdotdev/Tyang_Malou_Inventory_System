@@ -1,50 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product{% endblock %}
+{% block title %}Product
+{% endblock %}
 
 {% block body %}
-    <h1>Product</h1>
+	<nav class="bg-green-800 p-4">
+		<div class="container mx-auto flex items-center justify-between">
+			<div class="flex space-x-4"></div>
+			<div class="flex space-x-4">
+				<a href="#" class="text-white hover:bg-green-700 px-3 py-2 rounded">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"/>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</nav>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ product.id }}</td>
-            </tr>
-            <tr>
-                <th>Product_name</th>
-                <td>{{ product.productName }}</td>
-            </tr>
-            <tr>
-                <th>Category</th>
-                <td>{{ product.category }}</td>
-            </tr>
-            <tr>
-                <th>Supplier</th>
-                <td>{{ product.supplier }}</td>
-            </tr>
-            <tr>
-                <th>Cost_price</th>
-                <td>{{ product.costPrice }}</td>
-            </tr>
-            <tr>
-                <th>Selling_price</th>
-                <td>{{ product.sellingPrice }}</td>
-            </tr>
-            <tr>
-                <th>Unit_stock</th>
-                <td>{{ product.unitStock }}</td>
-            </tr>
-            <tr>
-                <th>Delivery_date</th>
-                <td>{{ product.deliveryDate }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+		<div class="relative py-3 sm:max-w-xl sm:mx-auto">
+			<div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+				<div class="max-w-md mx-auto">
+					<div class="divide-y divide-gray-200">
+						<h1 class="text-3xl font-semibold text-gray-900 pb-4">Product Details</h1>
+						<div class="py-8 space-y-4">
+							<div class="grid grid-cols-2 gap-4">
+								<div class="font-medium text-gray-700">Id</div>
+								<div class="text-gray-900">{{ product.id }}</div>
 
-    <a href="{{ path('app_product_index') }}">back to list</a>
+								<div class="font-medium text-gray-700">Product Name</div>
+								<div class="text-gray-900">{{ product.productName }}</div>
 
-    <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
+								<div class="font-medium text-gray-700">Category</div>
+								<div class="text-gray-900">{{ product.category }}</div>
 
-    {{ include('product/_delete_form.html.twig') }}
+								<div class="font-medium text-gray-700">Supplier</div>
+								<div class="text-gray-900">{{ product.supplier }}</div>
+
+								<div class="font-medium text-gray-700">Cost Price</div>
+								<div class="text-gray-900">${{ product.costPrice }}</div>
+
+								<div class="font-medium text-gray-700">Selling Price</div>
+								<div class="text-gray-900">${{ product.sellingPrice }}</div>
+
+								<div class="font-medium text-gray-700">Unit Stock</div>
+								<div class="text-gray-900">{{ product.unitStock }}</div>
+
+								<div class="font-medium text-gray-700">Delivery Date</div>
+								<div class="text-gray-900">{{ product.deliveryDate }}</div>
+							</div>
+						</div>
+						<div class="pt-6 flex items-center space-x-4">
+							<a href="{{ path('app_home') }}" class="text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">
+								← Back to list
+							</a>
+
+							<a href="{{ path('app_product_edit', {'id': product.id}) }}" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors">Edit</a>
+							{{ include('product/_delete_form.html.twig') }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

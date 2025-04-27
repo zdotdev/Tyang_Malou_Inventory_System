@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 final class AuthController extends AbstractController
 {
-    #[Route('/login', name: 'app_login')]
+    #[Route('/', name: 'app_login')]
     public function login(Request $request, SessionInterface $session, EntityManagerInterface $entityManager): Response
     {
         if ($request->isMethod('POST')) {

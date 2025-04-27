@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Product
+{% block title %}Home
 {% endblock %}
 
 {% block body %}
@@ -22,5 +22,52 @@
 			</div>
 		</div>
 	</nav>
+
+	<div class="container mx-auto px-4 py-8">
+		<h1 class="text-3xl font-bold text-green-800 mb-6">List of Products</h1>
+
+		<div class="overflow-x-auto shadow-md rounded-lg">
+			<table class="min-w-full bg-white">
+				<thead class="bg-green-800 text-white">
+					<tr>
+						<th class="py-3 px-4 text-left">Product Name</th>
+						<th class="py-3 px-4 text-left">Category</th>
+						<th class="py-3 px-4 text-left">Supplier</th>
+						<th class="py-3 px-4 text-left">Cost Price</th>
+						<th class="py-3 px-4 text-left">Selling Price</th>
+						<th class="py-3 px-4 text-left">Unit Stock</th>
+						<th class="py-3 px-4 text-left">Delivery Date</th>
+						<th class="py-3 px-4 text-left">Actions</th>
+					</tr>
+				</thead>
+				<tbody class="divide-y divide-gray-200">
+					{% for product in products %}
+						<tr class="hover:bg-gray-50">
+							<td class="py-3 px-4">{{ product.productName }}</td>
+							<td class="py-3 px-4">{{ product.category }}</td>
+							<td class="py-3 px-4">{{ product.supplier }}</td>
+							<td class="py-3 px-4">{{ product.costPrice }}</td>
+							<td class="py-3 px-4">{{ product.sellingPrice }}</td>
+							<td class="py-3 px-4">{{ product.unitStock }}</td>
+							<td class="py-3 px-4">{{ product.deliveryDate }}</td>
+							<td class="py-3 px-4">
+								<a href="{{ path('app_product_show', {'id': product.id}) }}" class="text-blue-600 hover:text-blue-800 mr-2">Show</a>
+								<a href="{{ path('app_product_edit', {'id': product.id}) }}" class="text-green-600 hover:text-green-800">Edit</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="9" class="py-3 px-4 text-center text-gray-500">No records found</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+		<div class="mt-6">
+			<a href="{{ path('app_product_new') }}" class="bg-green-800 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">Create New Product</a>
+		</div>
+	</div>
+
 
 {% endblock %}
