@@ -5,6 +5,21 @@
 
 {% block body %}
 
-<h1>Hello pipol</h1>
+	<nav class="bg-green-800 p-4">
+		<div class="container mx-auto flex items-center justify-between">
+			<div class="flex space-x-4">
+				<a href={{ path('app_employee_index') }} class="text-white hover:bg-green-700 px-3 py-2 rounded">Employee</a>
+				<a href="#" class="text-white hover:bg-green-700 px-3 py-2 rounded">Supplier</a>
+				<a href="#" class="text-white hover:bg-green-700 px-3 py-2 rounded">Sales</a>
+			</div>
+			<div class="flex space-x-4">
+				<a href="#" class="text-white hover:bg-green-700 px-3 py-2 rounded">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"/>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</nav>
 
 {% endblock %}

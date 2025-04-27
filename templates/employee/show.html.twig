@@ -1,34 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Employee{% endblock %}
+{% block title %}Employee
+{% endblock %}
 
 {% block body %}
-    <h1>Employee</h1>
+	<nav class="bg-green-800 p-4">
+		<div class="container mx-auto flex items-center justify-between">
+			<div class="flex space-x-4"></div>
+			<div class="flex space-x-4">
+				<a href="#" class="text-white hover:bg-green-700 px-3 py-2 rounded">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"/>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</nav>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ employee.id }}</td>
-            </tr>
-            <tr>
-                <th>Employee_name</th>
-                <td>{{ employee.employeeName }}</td>
-            </tr>
-            <tr>
-                <th>Employee_username</th>
-                <td>{{ employee.employeeUsername }}</td>
-            </tr>
-            <tr>
-                <th>Employee_password</th>
-                <td>{{ employee.employeePassword }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_employee_index') }}">back to list</a>
-
-    <a href="{{ path('app_employee_edit', {'id': employee.id}) }}">edit</a>
-
-    {{ include('employee/_delete_form.html.twig') }}
+	<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+		<div class="relative py-3 sm:max-w-xl sm:mx-auto">
+			<div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+				<div class="max-w-md mx-auto">
+					<div class="divide-y divide-gray-200">
+						<h1 class="text-3xl font-semibold text-gray-900 pb-4">Employee Details</h1>
+						<div class="py-8 space-y-4">
+							<div class="flex justify-between">
+								<span class="text-gray-500">ID</span>
+								<span class="font-medium">{{ employee.id }}</span>
+							</div>
+							<div class="flex justify-between">
+								<span class="text-gray-500">Name</span>
+								<span class="font-medium">{{ employee.employeeName }}</span>
+							</div>
+							<div class="flex justify-between">
+								<span class="text-gray-500">Username</span>
+								<span class="font-medium">{{ employee.employeeUsername }}</span>
+							</div>
+							<div class="flex justify-between">
+								<span class="text-gray-500">Password</span>
+								<span class="font-medium">{{ employee.employeePassword }}</span>
+							</div>
+						</div>
+						<div class="pt-6 flex space-x-4">
+							<a href="{{ path('app_employee_index') }}" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-md text-sm font-medium text-gray-700">Back to list</a>
+							<a href="{{ path('app_employee_edit', {'id': employee.id}) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-md text-sm font-medium text-white">Edit</a>
+							{{ include('employee/_delete_form.html.twig') }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
