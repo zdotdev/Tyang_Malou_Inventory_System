@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use App\Repository\SupplierRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,7 +23,7 @@ final class ProductController extends AbstractController{
     }
 
     #[Route('/new', name: 'app_product_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, SupplierRepository $supplierRepository): Response
     {
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
@@ -38,6 +39,7 @@ final class ProductController extends AbstractController{
         return $this->render('product/new.html.twig', [
             'product' => $product,
             'form' => $form,
+            'supplier' => $supplierRepository->findAll()
         ]);
     }
 
@@ -50,7 +52,7 @@ final class ProductController extends AbstractController{
     }
 
     #[Route('/{id}/edit', name: 'app_product_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Product $product, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Product $product, EntityManagerInterface $entityManager, SupplierRepository $supplierRepository): Response
     {
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
@@ -64,6 +66,7 @@ final class ProductController extends AbstractController{
         return $this->render('product/edit.html.twig', [
             'product' => $product,
             'form' => $form,
+            'supplier' => $supplierRepository->findAll()
         ]);
     }
 
