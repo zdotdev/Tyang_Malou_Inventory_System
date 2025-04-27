@@ -1,34 +1,60 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Sales{% endblock %}
+{% block title %}Sales
+{% endblock %}
 
 {% block body %}
-    <h1>Sales</h1>
+	<nav class="bg-green-800 p-4">
+		<div class="container mx-auto flex items-center justify-between">
+			<div class="flex space-x-4"></div>
+			<div class="flex space-x-4">
+				<a href="#" class="text-white hover:bg-green-700 px-3 py-2 rounded">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"/>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</nav>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ sale.id }}</td>
-            </tr>
-            <tr>
-                <th>Total_ammount</th>
-                <td>{{ sale.totalAmmount }}</td>
-            </tr>
-            <tr>
-                <th>Employee_name</th>
-                <td>{{ sale.employeeName }}</td>
-            </tr>
-            <tr>
-                <th>Date_created</th>
-                <td>{{ sale.dateCreated ? sale.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_sales_index') }}">back to list</a>
-
-    <a href="{{ path('app_sales_edit', {'id': sale.id}) }}">edit</a>
-
-    {{ include('sales/_delete_form.html.twig') }}
+	<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+		<div class="relative py-3 sm:max-w-xl sm:mx-auto">
+			<div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+				<div class="max-w-md mx-auto">
+					<div class="divide-y divide-gray-200">
+						<h1 class="text-3xl font-bold text-gray-900 pb-8">Sales Details</h1>
+						<div class="py-8">
+							<dl class="grid grid-cols-1 gap-x-4 gap-y-6">
+								<div class="sm:col-span-1">
+									<dt class="text-sm font-medium text-gray-500">ID</dt>
+									<dd class="mt-1 text-sm text-gray-900">{{ sale.id }}</dd>
+								</div>
+								<div class="sm:col-span-1">
+									<dt class="text-sm font-medium text-gray-500">Total Amount</dt>
+									<dd class="mt-1 text-sm text-gray-900">{{ sale.totalAmmount }}</dd>
+								</div>
+								<div class="sm:col-span-1">
+									<dt class="text-sm font-medium text-gray-500">Employee Name</dt>
+									<dd class="mt-1 text-sm text-gray-900">{{ sale.employeeName }}</dd>
+								</div>
+								<div class="sm:col-span-1">
+									<dt class="text-sm font-medium text-gray-500">Date Created</dt>
+									<dd class="mt-1 text-sm text-gray-900">{{ sale.dateCreated ? sale.dateCreated|date('Y-m-d H:i:s') : '' }}</dd>
+								</div>
+							</dl>
+						</div>
+						<div class="pt-6 flex items-center space-x-4">
+							<a href="{{ path('app_supplier_index') }}" class="text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">
+								← Back to list
+							</a>
+							<a href="{{ path('app_sales_edit', {'id': sale.id}) }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200">
+								Edit
+							</a>
+							{{ include('sales/_delete_form.html.twig') }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

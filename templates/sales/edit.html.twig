@@ -1,13 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Sales{% endblock %}
+{% block title %}Edit Sales
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Sales</h1>
+	<nav class="bg-green-800 p-4">
+		<div class="container mx-auto flex items-center justify-between">
+			<div class="flex space-x-4"></div>
+			<div class="flex space-x-4">
+				<a href="#" class="text-white hover:bg-green-700 px-3 py-2 rounded">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"/>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</nav>
 
-    {{ include('sales/_form.html.twig', {'button_label': 'Update'}) }}
+	<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+		<div class="relative py-3 sm:max-w-xl sm:mx-auto">
+			<div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
+				<div class="max-w-md mx-auto">
+					<div class="divide-y divide-gray-200">
+						<div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+							<h1 class="text-3xl font-bold text-gray-900 mb-8">Edit Sales</h1>
 
-    <a href="{{ path('app_sales_index') }}">back to list</a>
+							{{ include('sales/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('sales/_delete_form.html.twig') }}
+							<div class="pt-6 flex items-center space-x-4">
+								<a href="{{ path('app_sales_index') }}" class="text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">
+									← Back to list
+								</a>
+
+								{{ include('sales/_delete_form.html.twig') }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
