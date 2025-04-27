@@ -19,8 +19,8 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $category = null;
 
-    #[ORM\Column]
-    private ?int $supplier = null;
+    #[ORM\Column(length: 255)]
+    private ?string $supplier = null;
 
     #[ORM\Column]
     private ?float $cost_price = null;
@@ -31,8 +31,8 @@ class Product
     #[ORM\Column]
     private ?int $unit_stock = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $delivery_date = null;
+    #[ORM\Column(type: "date")]
+    private ?\DateTimeInterface $delivery_date = null;
 
     public function getId(): ?int
     {
@@ -111,12 +111,12 @@ class Product
         return $this;
     }
 
-    public function getDeliveryDate(): ?string
+    public function getDeliveryDate(): ?\DateTimeInterface
     {
         return $this->delivery_date;
     }
 
-    public function setDeliveryDate(string $delivery_date): static
+    public function setDeliveryDate(\DateTimeInterface $delivery_date): static
     {
         $this->delivery_date = $delivery_date;
 
