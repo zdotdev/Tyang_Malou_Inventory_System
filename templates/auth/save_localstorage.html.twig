@@ -8,8 +8,8 @@
 				localStorage.setItem('user_id', '{{ user_id }}');
 				localStorage.setItem('username', '{{ username|e('js') }}');
 
-				// Then redirect
-				window.location.href = "{{ path('app_home') }}";
+				// Then redirect with username as parameter
+				window.location.href = "{{ path('app_home') }}?main={{ username|url_encode }}";
 			});
 		</script>
 	</head>
