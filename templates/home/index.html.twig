@@ -50,7 +50,7 @@
 							<td class="py-3 px-4">{{ product.costPrice }}</td>
 							<td class="py-3 px-4">{{ product.sellingPrice }}</td>
 							<td class="py-3 px-4">{{ product.unitStock }}</td>
-							<td class="py-3 px-4">{{ product.deliveryDate }}</td>
+							<td class="py-3 px-4">{{ product.deliverydate|date('Y-m-d') }}</td>
 							<td class="py-3 px-4">
 								<a href="{{ path('app_product_show', {'id': product.id}) }}" class="text-blue-600 hover:text-blue-800 mr-2">Show</a>
 								<a href="{{ path('app_product_edit', {'id': product.id}) }}" class="text-green-600 hover:text-green-800">Edit</a>

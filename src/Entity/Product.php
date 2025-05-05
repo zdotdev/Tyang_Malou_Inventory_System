@@ -63,12 +63,12 @@ class Product
         return $this;
     }
 
-    public function getSupplier(): ?int
+    public function getSupplier(): ?string
     {
         return $this->supplier;
     }
 
-    public function setSupplier(int $supplier): static
+    public function setSupplier(?string $supplier): static
     {
         $this->supplier = $supplier;
 
